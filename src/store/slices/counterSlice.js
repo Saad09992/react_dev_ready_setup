@@ -4,8 +4,7 @@ export const counterSlice = createSlice({
   name: "counter",
   initialState: {
     count: 0,
-    data: [],
-    loading: false,
+    users: [],
   },
   reducers: {
     incrementCount: (state) => {
@@ -14,23 +13,20 @@ export const counterSlice = createSlice({
     clearCount: (state) => {
       state.count = 0;
     },
+    clearUsers: (state) => {
+      state.users = [];
+    },
   },
-  // extraReducers: (builder) => {
-  //   builder
-  //     .addCase(getDataFromApi.fulfilled, (state, action) => {
-  //       state.data = action.payload;
-  //     })
-  //     .addCase(getDataFromApi.pending, (state) => {
-  //       state.data = [];
-  //       state.loading = true;
-  //     })
-  //     .addCase(getDataFromApi.rejected, (state) => {
-  //       state.data = [];
-  //       state.loading = false;
-  //     });
-  // },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getDataFromApi.fulfilled, (state, action) => {
+        console.log(action.payload);
+        state.users = action.payload || [];
+      })
+      .addCase(getDataFromApi.rejected, (state) => {});
+  },
 });
 
-export const { incrementCount, clearCount } = counterSlice.actions;
+export const { incrementCount, clearCount, clearUsers } = counterSlice.actions;
 
 export default counterSlice.reducer;
