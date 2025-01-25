@@ -4,9 +4,9 @@ import Footer from "../components/Footer";
 
 function RootLayout({ children }) {
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <Header />
-      {children}
+      <div className="flex-grow">{children}</div>
       <Footer />
     </div>
   );
