@@ -1,15 +1,1 @@
 @import "tailwindcss";
-html {
-  scroll-behavior: smooth;
-}
-/* Custom Blur Effects */
-.backdrop-blur-xl {
-  backdrop-filter: blur(24px);
-}
-
-/* Particle Canvas Fix */
-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
